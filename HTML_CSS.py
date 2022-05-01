@@ -38,6 +38,9 @@ nav
     height: 100%;
     background-color: rgb(34, 46, 46);
     z-index: 100;
+
+    direction: ltr;
+    overflow: auto;
 }
 nav h2
 {
@@ -94,20 +97,30 @@ nav .current
     position: absolute;
     width: 70%;
     left: 30%;
-    height: 30%;
+    height: 18%;
     top: 17%;
     background-color: #5a86ff;
 }
 .bilan:hover {
     color: #83fbff;
 }
-.container
+
+.list_container
 {
     position: absolute;
     width: 70%;
     left: 30%;
-    top: 46%;
-    height: auto;
+    top: 35%;
+    height: 65%;
+    direction: ltr;
+    overflow: auto;
+
+}
+
+.container
+{
+    position: absolute;
+    width: 100%;
     z-index: 100;
 }
 
@@ -119,22 +132,20 @@ nav .current
 .colorcontainer
 {
     position: absolute;
-    top: 47%;
-    left: 30%;
     height: auto;
-    width: 70%;
+    width: 100%;
 }
 
 .blue
 {
-    height: 64px;
+    height: 65px;
     background-color: #386aff;
     z-index: 110;
 }
 
 .cyan
 {
-    height: 64px;
+    height: 65.5px;
     background-color: #0051ad;
     z-index: 110;
 }''')
@@ -207,11 +218,13 @@ nav .current
             ---------------------------------------------------------------
             </p>
         </div>
-        <div class="colorcontainer">
-            {totalcolorcontainer}
-        </div>
-        <div class="container">
-            {totalcoupures}
+        <div class="list_container">
+            <div class="colorcontainer">
+                {totalcolorcontainer}
+            </div>
+            <div class="container">
+                {totalcoupures}
+            </div>
         </div>
     </body>
 </html>
