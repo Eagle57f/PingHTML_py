@@ -3,11 +3,26 @@ from time import strftime, sleep
 from datetime import datetime
 from threading import Thread
 from HTML_CSS import HTML_CSS
+from dotenv import load_dotenv
 
 exit=False
 numberFichier = 1
 totalcoupures = ""
 file = __file__
+
+load_dotenv('.env')
+load_dotenv(verbose=True)
+dir = os.getenv('DIR')
+
+print(dir)
+
+if dir == None:
+    directory = f"{os.path.dirname(__file__)}"
+else:
+    directory = dir
+ 
+
+
 
 def ftkinter():
     global gui
@@ -30,13 +45,13 @@ def prg():
     totalcolorcontainer = ""
     for fichier in os.listdir(os.path.dirname(__file__)):
         if "docping---en_cours.html" in fichier:
-            fichier = open(f"{os.path.dirname(__file__)}\\docping---en_cours.html", "r+", encoding="utf-8")
+            fichier = open(f"{directory}\\docping---en_cours.html", "r+", encoding="utf-8")
         else:
-            fichier = open(f"{os.path.dirname(__file__)}\\docping---en_cours.html", "w", encoding="utf-8")
+            fichier = open(f"{directory}\\docping---en_cours.html", "w", encoding="utf-8")
             fichier.close()
-            fichier = open(f"{os.path.dirname(__file__)}\\docping---en_cours.html", "r+", encoding="utf-8")
+            fichier = open(f"{directory}\\docping---en_cours.html", "r+", encoding="utf-8")
 
-    fichierpath = os.path.dirname(__file__)
+
     fichier.truncate(0)
     heuredebuttest = datetime.now()
     dureecoupures = 0
@@ -82,12 +97,12 @@ def prg():
         moyennecoupures = "0"
     heurefintest = datetime.now()
     heurefintestchange = heurefintest.strftime("%Y-%m-%d_%H-%M-%S")
-    fichier.write(HTML_CSS.fHTML(heuredebuttest, heurefintest, dureetest, nombrecoupures, dureecoupures, moyennecoupures, totalcoupurest, heurefintestchange, totalcolorcontainer))
+    fichier.write(HTML_CSS.fHTML(heuredebuttest, heurefintest, dureetest, nombrecoupures, dureecoupures, moyennecoupures, totalcoupurest, heurefintestchange, totalcolorcontainer, directory))
     fichier.close()
 
-    os.rename(f"{fichierpath}\\docping---en_cours.html", f"{fichierpath}\\docping---{heurefintestchange}.html")
-    HTML_CSS.currentHTML(fichierpath)
-    os.system(f'start "" "docping---{heurefintestchange}.html"')
+    os.rename(f"{directory}\\docping---en_cours.html", f"{directory}\\docping---{heurefintestchange}.html")
+    HTML_CSS.currentHTML(directory)
+    os.system(f'start "" "{directory}\\docping---{heurefintestchange}.html"')
 
 
 
@@ -96,7 +111,7 @@ def prg():
 ftkinter()
 
 def css():
-    with open(f"{os.path.dirname(__file__)}\\docping.css", "w+", encoding="utf-8") as fcss:
+    with open(f"{directory}\\docping.css", "w+", encoding="utf-8") as fcss:
         fcss.truncate(0)
         fcss.write(HTML_CSS.fCSS())
 

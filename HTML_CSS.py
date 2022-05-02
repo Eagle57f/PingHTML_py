@@ -150,11 +150,10 @@ nav .current
     z-index: 110;
 }''')
 
-    def fHTML(heuredebuttest, heurefintest, dureetest, nombrecoupures, dureecoupures, moyennecoupures, totalcoupures, heurefintestchange, totalcolorcontainer):
+    def fHTML(heuredebuttest, heurefintest, dureetest, nombrecoupures, dureecoupures, moyennecoupures, totalcoupures, heurefintestchange, totalcolorcontainer, directory):
         Fichtexte = f'''<nav><h2>Navigation:</h2>'''
         i = 0
-        isclass = ""
-        for fichiers in os.listdir(os.path.dirname(__file__)):
+        for fichiers in os.listdir(directory):
             if fichiers.endswith(".html") and fichiers.startswith("docping---"):
                 if "en_cours" in fichiers:
                     heurefintestchange2 = f'{heurefintestchange}'.replace("_", "<br>")
@@ -167,13 +166,13 @@ nav .current
         Fichtexte = Fichtexte + f'''</nav>
 '''
 
-        for fichiers in os.listdir(os.path.dirname(__file__)):
+        for fichiers in os.listdir(directory):
             stop=False
             if fichiers.endswith(".html") and fichiers.startswith("docping---"):
                 if "en cours" in fichiers:
                     pass
                 else:
-                    with open(f"{os.path.dirname(__file__)}\\{fichiers}", "r", encoding="utf-8") as fichier:
+                    with open(f"{directory}\\{fichiers}", "r", encoding="utf-8") as fichier:
                         contenu = fichier.readlines()
                     
                     for ligne in contenu:
@@ -186,7 +185,7 @@ nav .current
                                 print(len(contenu))
                     i = 0
                     
-                    with open(f"{os.path.dirname(__file__)}\\{fichiers}", "w", encoding="utf-8") as fichier:
+                    with open(f"{directory}\\{fichiers}", "w", encoding="utf-8") as fichier:
                         fichier.writelines(contenu)
 
 
@@ -231,8 +230,8 @@ nav .current
 ''')
 
 
-    def currentHTML(fichierpath):
-        for fichiers in os.listdir(os.path.dirname(__file__)):
+    def currentHTML(directory):
+        for fichiers in os.listdir(directory):
             i=0
             contenu = ""
             lignesplit = ""
@@ -241,7 +240,7 @@ nav .current
                 if "en cours" in fichiers:
                     pass
                 else:
-                    with open(f"{os.path.dirname(__file__)}\\{fichiers}", "r", encoding="utf-8") as fichier:
+                    with open(f"{directory}\\{fichiers}", "r", encoding="utf-8") as fichier:
                         contenu = fichier.readlines()
                         j=0
                         for ligne in contenu:
@@ -254,7 +253,7 @@ nav .current
                                 for item in lignesplit:
                                     j = j + 1
 
-                                    fichierpath2 = f'{fichierpath}'.replace('\\', '\\\\')
+                                    fichierpath2 = f'{directory}'.replace('\\', '\\\\')
                                     changefichier = f"{fichier}"
                                     changefichier = f"{changefichier}".replace(f"<_io.TextIOWrapper name='","")
                                     changefichier = f"{changefichier}".replace(f"{fichierpath2}\\\\", "")
@@ -271,6 +270,6 @@ nav .current
                             contenu[l-1] = lignejoin + "\n"
                             i = 0
                             l = 0
-                        with open(f"{os.path.dirname(__file__)}\\{fichiers}", "w", encoding="utf-8") as fichier:
+                        with open(f"{directory}\\{fichiers}", "w", encoding="utf-8") as fichier:
                             if contenu != []:
                                 fichier.writelines(contenu)
