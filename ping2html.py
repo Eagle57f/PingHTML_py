@@ -1,4 +1,5 @@
-import os, tkinter
+from os import path, getenv, listdir, system, rename
+from tkinter import Tk, Button
 from time import strftime, sleep
 from datetime import datetime
 from threading import Thread
@@ -10,14 +11,15 @@ numberFichier = 1
 totalcoupures = ""
 file = __file__
 
+
 load_dotenv('.env')
 load_dotenv(verbose=True)
-dir = os.getenv('DIR')
+dir = getenv('DIR')
 
 print(dir)
 
 if dir == None:
-    directory = f"{os.path.dirname(__file__)}"
+    directory = f"{path.dirname(__file__)}"
 else:
     directory = dir
  
@@ -26,8 +28,8 @@ else:
 
 def ftkinter():
     global gui
-    gui = tkinter.Tk()
-    btn = tkinter.Button(gui, text ="Exit", command = fexit)
+    gui = Tk()
+    btn = Button(gui, text ="Exit", command = fexit)
     btn.pack()
     Thread(target=prg).start()
     gui.mainloop()
@@ -43,7 +45,7 @@ def prg():
     var=True
     totalcoupurest = ""
     totalcolorcontainer = ""
-    for fichier in os.listdir(os.path.dirname(__file__)):
+    for fichier in listdir(path.dirname(__file__)):
         if "docping---en_cours.html" in fichier:
             fichier = open(f"{directory}\\docping---en_cours.html", "r+", encoding="utf-8")
         else:
@@ -60,7 +62,7 @@ def prg():
     height= ""
     while exit == False:
         sleep(0.1)
-        response = os.system("ping -n 1 google.com")
+        response = system("ping -n 1 google.com")
         a = datetime.now()
         heure = strftime(a.strftime("%Y-%m-%d %H:%M:%S"))
 
@@ -100,9 +102,9 @@ def prg():
     fichier.write(HTML_CSS.fHTML(heuredebuttest, heurefintest, dureetest, nombrecoupures, dureecoupures, moyennecoupures, totalcoupurest, heurefintestchange, totalcolorcontainer, directory))
     fichier.close()
 
-    os.rename(f"{directory}\\docping---en_cours.html", f"{directory}\\docping---{heurefintestchange}.html")
+    rename(f"{directory}\\docping---en_cours.html", f"{directory}\\docping---{heurefintestchange}.html")
     HTML_CSS.currentHTML(directory)
-    os.system(f'start "" "{directory}\\docping---{heurefintestchange}.html"')
+    system(f'start "" "{directory}\\docping---{heurefintestchange}.html"')
 
 
 

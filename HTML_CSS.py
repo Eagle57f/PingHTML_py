@@ -1,4 +1,4 @@
-import os
+from os import listdir
 
 class HTML_CSS:
     def fCSS():
@@ -25,8 +25,10 @@ header
     width: 40%;
     left: 30%;
     top: 0px;
-    height: 17%;
+    height: 15%;
     background-color: #0051ad;
+    direction: ltr;
+    overflow: auto;
 }
 nav
 {
@@ -81,9 +83,11 @@ nav .current
     top: 0px;
     right: 0px;
     width: 30%;
-    height: 17%;
+    height: 15%;
     background-color: #2b2b2b;
     z-index: 100;
+    direction: ltr;
+    overflow: auto;
 }
 
 .display h2
@@ -97,9 +101,11 @@ nav .current
     position: absolute;
     width: 70%;
     left: 30%;
-    height: 18%;
-    top: 17%;
+    height: 25%;
+    top: 15%;
     background-color: #5a86ff;
+    direction: ltr;
+    overflow: auto;
 }
 .bilan:hover {
     color: #83fbff;
@@ -110,8 +116,8 @@ nav .current
     position: absolute;
     width: 70%;
     left: 30%;
-    top: 35%;
-    height: 65%;
+    top: 40%;
+    height: 60%;
     direction: ltr;
     overflow: auto;
 
@@ -153,7 +159,7 @@ nav .current
     def fHTML(heuredebuttest, heurefintest, dureetest, nombrecoupures, dureecoupures, moyennecoupures, totalcoupures, heurefintestchange, totalcolorcontainer, directory):
         Fichtexte = f'''<nav><h2>Navigation:</h2>'''
         i = 0
-        for fichiers in os.listdir(directory):
+        for fichiers in listdir(directory):
             if fichiers.endswith(".html") and fichiers.startswith("docping---"):
                 if "en_cours" in fichiers:
                     heurefintestchange2 = f'{heurefintestchange}'.replace("_", "<br>")
@@ -166,7 +172,7 @@ nav .current
         Fichtexte = Fichtexte + f'''</nav>
 '''
 
-        for fichiers in os.listdir(directory):
+        for fichiers in listdir(directory):
             stop=False
             if fichiers.endswith(".html") and fichiers.startswith("docping---"):
                 if "en cours" in fichiers:
@@ -207,14 +213,13 @@ nav .current
             <h2>{fichiersbr}</h2>
         </div>
         <div class="bilan">
-            <p>---------------------------------------------------------------<br>
+            <p>
             <strong>Début du test:</strong> {heuredebuttest}<br>
             <strong>Fin du test:</strong> {heurefintest}<br>
             <strong>Durée du test:</strong> {dureetest}<br><br>
             <strong>Nombre de coupures:</strong> {nombrecoupures}<br>
             <strong>Durée totale des coupures:</strong> {dureecoupures}<br>
-            <strong>Durée moyenne des coupures:</strong> {moyennecoupures}<br>
-            ---------------------------------------------------------------
+            <strong>Durée moyenne des coupures:</strong> {moyennecoupures}
             </p>
         </div>
         <div class="list_container">
@@ -231,7 +236,7 @@ nav .current
 
 
     def currentHTML(directory):
-        for fichiers in os.listdir(directory):
+        for fichiers in listdir(directory):
             i=0
             contenu = ""
             lignesplit = ""
