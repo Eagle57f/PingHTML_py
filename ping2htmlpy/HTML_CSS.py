@@ -3,6 +3,7 @@ from os import listdir
 class HTML_CSS:
     def fCSS():
         return('''
+
 body
 {
     background-color: #2b2b2b;
@@ -154,6 +155,85 @@ nav .current
     height: 65.5px;
     background-color: #0051ad;
     z-index: 110;
+}
+
+.list_container::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+.list_container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    border-radius: 10px;
+}
+ 
+.list_container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    background-color: #0051ad;
+}
+
+
+.display::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+.display::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    border-radius: 10px;
+}
+ 
+.display::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    background-color: #0051ad;
+}
+
+
+header::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+header::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    border-radius: 10px;
+}
+ 
+header::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    background-color: #0051ad;
+}
+
+
+nav::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+nav::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    border-radius: 10px;
+}
+ 
+nav::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5);
+    background-color: #0051ad;
+}
+
+
+.bilan::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+.bilan::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5); 
+    border-radius: 10px;
+}
+ 
+.bilan::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 136, 255, 0.5);
+    background-color: #0051ad;
 }''')
 
     def fHTML(heuredebuttest, heurefintest, dureetest, nombrecoupures, dureecoupures, moyennecoupures, totalcoupures, heurefintestchange, totalcolorcontainer, directory):
